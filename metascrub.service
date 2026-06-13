@@ -1,0 +1,16 @@
+[Unit]
+Description=MetaScrub metadata scrubbing web app
+After=network.target
+
+[Service]
+Type=simple
+User=metascrub
+Group=metascrub
+WorkingDirectory=/opt/metascrub
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/opt/metascrub/venv/bin/python /opt/metascrub/app.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

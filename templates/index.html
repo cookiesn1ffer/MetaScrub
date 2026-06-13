@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaScrub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>&gt;_ MetaScrub</h1>
+      <p class="subtitle">Strip hidden metadata from images, documents &amp; audio. Nothing leaves your server.</p>
+    </header>
+
+    <section class="dropzone" id="dropzone" tabindex="0">
+      <input type="file" id="fileInput" hidden
+             accept=".jpg,.jpeg,.png,.tiff,.webp,.docx,.mp3,.flac,.ogg,.m4a">
+      <div class="dropzone-content">
+        <div class="dropzone-icon">[ + ]</div>
+        <p>Drag &amp; drop a file here, or <span class="link">click to browse</span></p>
+        <p class="hint">JPG · PNG · TIFF · WEBP · DOCX · MP3 · FLAC · OGG · M4A &mdash; max 50MB</p>
+      </div>
+    </section>
+
+    <section class="progress-section" id="progressSection" hidden>
+      <div class="progress-label">
+        <span id="progressFilename"></span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+      <p class="progress-status" id="progressStatus">uploading...</p>
+    </section>
+
+    <section class="error-box" id="errorBox" hidden></section>
+
+    <section class="result-box" id="resultBox" hidden>
+      <h2>// scrub complete</h2>
+      <div class="result-meta">
+        <div><span class="label">file:</span> <span id="resultFilename"></span></div>
+        <div><span class="label">type:</span> <span id="resultType"></span></div>
+      </div>
+      <h3>stripped fields</h3>
+      <ul id="strippedList" class="stripped-list"></ul>
+      <a id="downloadBtn" class="download-btn" hidden>&gt; download cleaned file</a>
+    </section>
+
+    <section class="history-section">
+      <h2>// job history</h2>
+      <div class="table-wrapper">
+        <table id="historyTable">
+          <thead>
+            <tr>
+              <th>filename</th>
+              <th>type</th>
+              <th>stripped</th>
+              <th>timestamp</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="historyBody">
+            <tr><td colspan="5" class="empty-row">loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p>audience: {{ audience }} &mdash; files auto-delete after 1 hour</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

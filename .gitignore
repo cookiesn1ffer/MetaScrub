@@ -1,0 +1,24 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Runtime data
+db/*.db
+uploads/*
+cleaned/*
+!uploads/.gitkeep
+!cleaned/.gitkeep
+
+# Build artifacts
+dist/
+build_pyinstaller/
+*.spec
+assets/icon.ico
+
+# Test fixtures created while developing
+test_with_gps*.jpg
+*_clean.*
+*_cleaned.*
